@@ -76,13 +76,22 @@
 
 <script type="text/javascript">
 
-    var layers = {
-      Mapbox_Streets: {
-          layer: L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
-              id: 'mapbox.streets', detectRetina: true
-          })
-      }
-    };
+var layers = {
+   layer1: {
+       layer: L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'),
+       legend: '<i style="background: black; opacity: 0.5"></i><p><b>legend 1</b></p>'
+   },
+   layer2: {
+       layer: L.geoJson.ajax('../../assets/counties.geojson', {
+           color: 'orange',
+           weight: 5
+       }),
+       legend: '<i style="background: orange; opacity: 0.5"></i><p><b>legend 2</b></p>'
+   },
+   layer3: {
+       layer: L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png')
+   }
+};
 
     var shrine = {
         shrine1: {lat: 47.956, lng: -118.980, zoom: 14,  name: "Fushimi Inari"},
