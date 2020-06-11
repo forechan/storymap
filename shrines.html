@@ -27,7 +27,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
         <script src="../../js/globeminimap.js"></script>
-        
+
     <!--story map plugin-->
     <script src="https://forechan.github.io/storymap/lib/storymap.2.3.js"></script>
 </head>
@@ -81,36 +81,45 @@
 
 <script type="text/javascript">
 
-var scenes = {
-      shrine1: {lat: 34.967228, lng: 135.772682, zoom: 7, name: 'Washington', layers: []},
-      minnesota: {lat: 46.7295316, lng: -94.7559395, zoom: 7, name: 'Minnesota', layers: []},
-      connecticut: {lat: 41.6032154, lng: -73.1237884, zoom: 9, name: 'Connecticut', layers: []},
-      sanfran: {lat: 37.7749243, lng: -122.454435, zoom: 11, name: 'San Franciso', layers: []},
-      lax: {lat: 34.0522292, lng: -118.2787044, zoom: 9, name: 'Los Angeles', layers: []},
-      illinois: {lat: 40.6331196, lng: -89.4335477, zoom: 7, name: 'Illinois', layers: []},
-      end: {lat: 38.2700, lng: -100.8603, zoom: 2, name: 'The End', layers: []}
-  };
+var layers = {
+        layer1: {
+            layer: L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'),
+            legend: '<i style="background: black; opacity: 0.5"></i><p><b>legend 1</b></p>'
+        },
+        layer2: {
+            layer: L.geoJson.ajax('../../assets/counties.geojson', {
+                color: 'orange',
+                weight: 5
+            }),
+            legend: '<i style="background: orange; opacity: 0.5"></i><p><b>legend 2</b></p>'
+        },
+        layer3: {
+            layer: L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png')
+        }
+    };
 
-  $('#storymap').storymap({
-      scenes: scenes,
-      baselayer: layers.cartodb_light,
-      legend: true, // if you do not want a legend feature, you can simply not define the createLegend function.
-      credits: "",
-      loader: true,
-      scalebar: false,
-      fly: true,
-      navwidget: true,
+    var scenes = {
+        shrine1: {lat: 44, lng: -123.5, zoom: 7, layers: [layers.layer2], name: "scene 1"},
+        shrine2: {lat: 44.5701158, lng: -123.2949388, zoom: 10, layers: [layers.layer2], name: "scene 2"},
+        shrine3: {lat: 44.5701158, lng: -123.2949388, zoom: 12, layers: [layers.layer1, layers.layer2], name: "scene 3"}
+    };
 
-      createMap: function () {
-          // create a map in the "map" div, set the view to a given place and zoom
-          var map = L.map($(".storymap-map")[0], {
-              zoomControl: false, scrollWheelZoom: false, fadeAnimation: true,
-              zoomAnimation: true
-          }).setView([44, -120], 7);
-          return map;
-      }
-  });
-
+    $('#storymap').storymap({
+        scenes: scenes,
+        baselayer: layers.layer3,
+        legend: true,
+        loader: true,
+        flyto: true,
+        scalebar: true,
+        scrolldown: true,
+        progressline: true,
+        navwidget: true,
+        createMap: function () {
+            var map = L.map($(".storymap-map")[0], {zoomControl: false}).setView([44, -120], 7);
+            basemap = this.baselayer.layer.addTo(map);
+            return map;
+        }
+    });
 </script>
 </body>
 </html>
