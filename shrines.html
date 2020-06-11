@@ -80,6 +80,7 @@
 
 
 <script type="text/javascript">
+
     var layers = {
       carto_db: {
         layer: L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png')
@@ -95,22 +96,24 @@
     };
 
     $('#storymap').storymap({
-        scenes: scenes,
-        layers: layers,
-        baselayer: layers.carto_db,
-        legend: true,
-        loader: true,
-        flyto: false,
-        scalebar: true,
-        scrolldown: false,
-        progressline: true,
-        navwidget: true,
-        createMap: function () {
-            var map = L.map($(".storymap-map")[0], {zoomControl: false}).setView([44, -120], 7);
-            basemap = this.baselayer.layer.addTo(map);
-            return map;
-        }
-    });
+         scenes: scenes,
+         baselayer: layers.carto_db,
+         legend: true, // if you do not want a legend feature, you can simply not define the createLegend function.
+         credits: "",
+         loader: true,
+         scalebar: false,
+         fly: true,
+         navwidget: true,
+
+         createMap: function () {
+             // create a map in the "map" div, set the view to a given place and zoom
+             var map = L.map($(".storymap-map")[0], {
+                 zoomControl: false, scrollWheelZoom: false, fadeAnimation: true,
+                 zoomAnimation: true
+             }).setView([44, -120], 7);
+             return map;
+         }
+     });
 </script>
 </body>
 </html>
