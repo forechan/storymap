@@ -59,47 +59,41 @@
     </div>
 </div>
 <script type="text/javascript">
+var layers = {
+   Mapbox_Streets: {
+       layer: L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
+           id: 'mapbox.streets', detectRetina: true
+       })
+   }
+ };
 
-    var layers = {
-        layer1: {
-            layer: L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'),
-            legend: '<i style="background: black; opacity: 0.5"></i><p><b>legend 1</b></p>'
-        },
-        layer2: {
-            layer: L.geoJson.ajax('../../assets/counties.geojson', {
-                color: 'orange',
-                weight: 5
-            }),
-            legend: '<i style="background: orange; opacity: 0.5"></i><p><b>legend 2</b></p>'
-        },
-        layer3: {
-            layer: L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png')
-        }
-    };
+ var shrine = {
+     shrine1: {lat: 47.956, lng: -118.980, zoom: 14,  name: "Grand Coule"},
+     Dam2: {lat: 47.995008, lng: -119.640264, zoom: 14,  name: "Dam 2"},
+     Dam3: {lat: 43.142858, lng: -79.040013, zoom: 14, name: "Dam 3"},
+     Dam4: {lat: 45.714795, lng: -120.692780, zoom: 14, name: "Dam 4"},
+     Dam5: {lat: 36.015935, lng: -114.737690, zoom: 15, name: "Dam 5"}
+ };
 
-    var shrines = {
-        shrine1: {lat: 34.967272, lng: 135.772693, zoom: 7, layers: [layers.layer2], name: "scene 1"},
-        scene2: {lat: 44.5701158, lng: -123.2949388, zoom: 10, layers: [layers.layer2], name: "scene 2"},
-        scene3: {lat: 44.5701158, lng: -123.2949388, zoom: 12, layers: [layers.layer1, layers.layer2], name: "scene 3"}
-    };
-
-    $('#storymap').storymap({
-        scenes: scenes,
-        baselayer: layers.layer3,
-        legend: true,
-        loader: true,
-        flyto: true,
-        credits:  "Build with <i class='material-icons' style='color: red; font-size: 10px;'>favorite</i> from Bo Zhao",
-        scalebar: true,
-        scrolldown: true,
-        progressline: true,
-        navwidget: true,
-        createMap: function () {
-            var map = L.map($(".storymap-map")[0], {zoomControl: false}).setView([44, -120], 7);
-            basemap = this.baselayer.layer.addTo(map);
-            return map;
-        }
-    });
-</script>
+ $('#storymap').storymap({
+     scenes: dam,
+     baselayer: layers.Mapbox_Streets,
+     navbar: true,
+     legend: true,
+     loader: false,
+     flyto: true,
+     scalebar: false,
+     scrolldown: true,
+     progressline: true,
+     navwidget: true,
+     createMap: function () {
+         var map = L.map($(".storymap-map")[0], {zoomControl: false}).setView([44, -120], 7);
+         basemap = this.baselayer.layer.addTo(map);
+         for (const d in dam) {
+           dam_info = dam[d] // return info in format {lat: 47.956, lng: -118.980, zoom: 14,  name: "Dam 1"}
+           var marker = L.marker([shrine_info.lat, shrine_info.lng]).addTo(map);
+         }
+         return map;
+     }</script>
 </body>
 </html>
