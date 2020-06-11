@@ -82,8 +82,8 @@
 <script type="text/javascript">
     var layers = {
       Mapbox_Streets: {
-          layer: L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
-              id: 'mapbox.streets', detectRetina: true
+          layer: L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+              id: 'cart.db', detectRetina: true
           })
       }
     };
@@ -97,7 +97,7 @@
 
     $('#storymap').storymap({
         scenes: dam,
-        baselayer: layers.Mapbox_Streets,
+        baselayer: layers.cart.db,
         navbar: true,
         legend: true,
         loader: false,
