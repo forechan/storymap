@@ -82,21 +82,20 @@
 <script type="text/javascript">
 
 var layers = {
-        layer1: {
-            layer: L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'),
-            legend: '<i style="background: black; opacity: 0.5"></i><p><b>legend 1</b></p>'
-        },
-        layer2: {
-            layer: L.geoJson.ajax('../../assets/counties.geojson', {
-                color: 'orange',
-                weight: 5
-            }),
-            legend: '<i style="background: orange; opacity: 0.5"></i><p><b>legend 2</b></p>'
-        },
-        layer3: {
-            layer: L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png')
-        }
-    };
+      layer1: {
+          layer: L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'),
+          legend: '<i style="background: black; opacity: 0.5"></i><p><b>legend 1</b></p>'
+      },
+      layer2: {
+          layer: L.geoJson.ajax
+              color: 'orange',
+          }),
+          legend: '<i style="background: orange; opacity: 0.5"></i><p><b>legend 2</b></p>'
+      },
+      layer3: {
+          layer: L.tileLayer('http://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png')
+      }
+  };
 
     var scenes = {
         shrine1: {lat: 44, lng: -123.5, zoom: 7, layers: [layers.layer2], name: "scene 1"},
