@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>5 Largest US Hydroelectric Dams</title>
+    <title>Shrines in Japan</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -34,8 +34,8 @@
         <div class="col-sm-6 col-md-4 storymap-story">
           </section>
             <section  data-scene="shrine1">
-                <h2>Grand Coulee Dam</h2>
-                <img src="/images/Fushimi-Inari-Shrine-Torii-Gates-Curve.jpg" alt="Fushimi Inari">
+                <h2>Fushimi Inari Shrine</h2>
+                <img src="/images/Fushimi-Inari-Shrine-Torii-Gates-Curve.jpg">
                 <h6>Photo by Bureau of Reclamation</h6>
                 <p>Fushimi Inari Shrine is located in Kyoto. I have personally
                   visited this shrine myself when I went to Japan. There are lots
@@ -118,31 +118,6 @@
                 <br>Dams and Energy Sectors Interdependency Study. (2017). 58.</br>
               </h6>
             </section>
-            <section  data-scene="Dam5">
-                <h2>Hoover Dam</h2>
-                <img src="HooverDam.jpg" alt="Hoover Dam" width="100%">
-                <h6>Photo by GrayLineLasVegas</h6>
-                <p>The Hoover Dam is a concrete gravity dam in the located in Boulder City, Nevada in the Black Canyons of the Colorado
-                River on the border between Nevada and Arizona. Constructed from 1931 to 1936, the Hoover Dam was testimony to the American people
-                that great success can still be built even when the economy was at it one of its lowest points. This construction
-                efforts took thousands of workers, many who travelled from many states to find work in the peak of the Great Depression.
-                Hoover Dam holds the largest resevoir volume of any dam in the United States. Essentailly, it holds the whole Lake Mead.
-                Th dam provides Power to California, Nevada & Arizona.
-              </p>
-                <p> Hoover Dam fulfilled the goal of disseminating the one-wild Colorado River through the parched Southwest landscape,
-                  fueling the development of such major cities as Los Angeles, Las Vegas and Phoenix. To these day, the Hoover Dam is a well
-                  known place and familiar to everyone as it is always something great to talk about. Capable of irrigating 2 million
-                  acres, its 17 turbines generate 4 billion Kilowatts-hour of power, enough electricity to power 1.3 million homes.
-                  The dam was designated a National Historic Landmark in 1985 and one of America’s Seven Modern Civil Engineering Wonders
-                  in 1994. It receives some 7 million visitors annually, while Lake Mead with almost 10 million visitors each year (History.com)
-                </p>
-                <h6><br>References:</br>
-                <br>Hoover Dam | Bureau of Reclamation. (n.d.). Retrieved May 15, 2020, from https://www.usbr.gov/lc/hooverdam/faqs/powerfaq.html</br>
-                <br>Hoover Dam. (2020). In Wikipedia. https://en.wikipedia.org/w/index.php?title=Hoover_Dam&oldid=956400664</br>
-                <br>Editors, H. com. (n.d.). Hoover Dam. HISTORY. Retrieved May 15, 2020, from https://www.history.com/topics/great-depression/hoover-dam</br>
-                <br>Dams and Energy Sectors Interdependency Study. (2017). 58.</br>
-              </h6>
-            </section>
         </div>
         <div class="col-sm-6 col-md-8 storymap-map"></div>
     </div>
@@ -161,8 +136,8 @@
       }
     };
 
-    var dam = {
-        Dam1: {lat: 47.956, lng: -118.980, zoom: 14,  name: "Grand Coule"},
+    var shrine = {
+        shrine1: {lat: 47.956, lng: -118.980, zoom: 14,  name: "Grand Coule"},
         Dam2: {lat: 47.995008, lng: -119.640264, zoom: 14,  name: "Dam 2"},
         Dam3: {lat: 43.142858, lng: -79.040013, zoom: 14, name: "Dam 3"},
         Dam4: {lat: 45.714795, lng: -120.692780, zoom: 14, name: "Dam 4"},
@@ -184,8 +159,8 @@
             var map = L.map($(".storymap-map")[0], {zoomControl: false}).setView([44, -120], 7);
             basemap = this.baselayer.layer.addTo(map);
             for (const d in dam) {
-              dam_info = dam[d] // return info in format {lat: 47.956, lng: -118.980, zoom: 14,  name: "Dam 1"}
-              var marker = L.marker([dam_info.lat, dam_info.lng]).addTo(map);
+              dam_info = dam[d]
+              var marker = L.marker([shrine_info.lat, shrine_info.lng]).addTo(map);
             }
             return map;
         }
