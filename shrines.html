@@ -113,12 +113,12 @@
             basemap = this.baselayer.layer.addTo(map);
             for (const d in shrine) {
               shrine_info = shrine[d] // return info in format {lat: 47.956, lng: -118.980, zoom: 14,  name: "Dam 1"}
-              var marker = L.marker([dam_info.lat, dam_info.lng]).addTo(map);
+              var marker = L.marker([shrine_info.lat, shrine_info.lng]).addTo(map);
             }
             return map;
         }
     });
-    
+
 </script>
 </body>
 </html>
