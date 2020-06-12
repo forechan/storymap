@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +11,7 @@
 
     <!--animation-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://alexz1.github.io/FinalProject/dist/storymap.2.3.css">
     <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
 
     <!-- Adding Facebook Icon-->
@@ -23,64 +23,57 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
 
-    <!--mini globle map-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
-        <script src="../../js/globeminimap.js"></script>
-
     <!--story map plugin-->
     <script src="https://forechan.github.io/storymap/lib/storymap.2.3.js"></script>
 </head>
 <body>
 
-
-<div id="storymap" class="container-fluid">
-    <div class="row">
-        <div class="col-sm-6 col-md-4 storymap-story">
-          </section>
-            <section  data-scene="shrine1">
-                <h2>Fushimi Inari Shrine</h2>
-                <img src="Fushimi-Inari-Shrine-Torii-Gates-Curve.jpg" width="80%" length="80%">
-                <p>Fushimi Inari Shrine is located in Kyoto. I have personally
-                  visited this shrine myself when I went to Japan. There are lots
-                  of torii gates that create a tunnel and it is very beautiful.
-                  This shrine worships foxes as their gods.</p>
+  <div id="storymap" class="container-fluid">
+      <div class="row">
+          <div class="col-sm-6 col-md-4 storymap-story">
             </section>
-            <section  data-scene="shrine2">
-                <h2>Miyajima Shrine</h2>
-                <img src="Miyajima-Floating-shrine.jpg" width="80%" length="80%">
-                <p>Miyajima shrine floats in the middle of the water. This island
-                  is located in Hiroshima Island. It's very famous and considered a UNESCO
-                  World Heritage site. It is believed to have been built in 593, known as
-                  Suiko period.
+              <section  data-scene="shrine1">
+                  <h2>Fushimi Inari Shrine</h2>
+                  <img src="Fushimi-Inari-Shrine-Torii-Gates-Curve.jpg" width="80%" length="80%">
+                  <p>Fushimi Inari Shrine is located in Kyoto. I have personally
+                    visited this shrine myself when I went to Japan. There are lots
+                    of torii gates that create a tunnel and it is very beautiful.
+                    This shrine worships foxes as their gods.</p>
+              </section>
+              <section  data-scene="shrine2">
+                  <h2>Miyajima Shrine</h2>
+                  <img src="Miyajima-Floating-shrine.jpg" width="80%" length="80%">
+                  <p>Miyajima shrine floats in the middle of the water. This island
+                    is located in Hiroshima Island. It's very famous and considered a UNESCO
+                    World Heritage site. It is believed to have been built in 593, known as
+                    Suiko period.
+                  </p>
+              </section>
+              <section  data-scene="shrine3">
+                  <h2>Meiji Jingu</h2>
+                  <img src="treasure-house.jpg" width="100%">
+                  <p>Meiji Jingu is located in Tokyo. This shrine is dedicated to Emperor
+                    Meiji and built in 1920. The shrine was actually destroyed in World War II
+                    but was rebuilt.
+                  </p>
+              </section>
+              <section  data-scene="shrine4">
+                  <h2>Kinkakuji</h2>
+                  <img src="uZTOfPGv_original-17.jpg" alt="John Day Dam" width="100%">
+                  <p> Kinkakuji was built in 1955 and is located in Kyoto.
+                    The pavillion is 3 stories high. The name kinkaku actually
+                    comes from the gold leaf on the roof.
                 </p>
-            </section>
-            <section  data-scene="shrine3">
-                <h2>Meiji Jingu</h2>
-                <img src="treasure-house.jpg" width="100%">
-                <p>Meiji Jingu is located in Tokyo. This shrine is dedicated to Emperor
-                  Meiji and built in 1920. The shrine was actually destroyed in World War II
-                  but was rebuilt.
-                </p>
-            </section>
-            <section  data-scene="shrine4">
-                <h2>Kinkakuji</h2>
-                <img src="uZTOfPGv_original-17.jpg" alt="John Day Dam" width="100%">
-                <p> Kinkakuji was built in 1955 and is located in Kyoto.
-                  The pavillion is 3 stories high. The name kinkaku actually
-                  comes from the gold leaf on the roof.
-              </p>
-            </section>
-        </div>
-        <div class="col-sm-6 col-md-8 storymap-map"></div>
-    </div>
+              </section>
+          </div>
+          <div class="col-sm-6 col-md-8 storymap-map"></div>
+      </div>
 
-</div>
+  </div>
 
 
 
 <script type="text/javascript">
-
 
     var layers = {
       Mapbox_Streets: {
@@ -118,7 +111,6 @@
             return map;
         }
     });
-
 </script>
 </body>
 </html>
