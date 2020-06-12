@@ -81,12 +81,14 @@
 
 <script type="text/javascript">
 
-var layers = {
-   satellite: {
-         layer: L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
-             id: 'mapbox.satellite'
-         })
-   },
+
+    var layers = {
+      Mapbox_Streets: {
+          layer: L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw', {
+              id: 'mapbox.streets', detectRetina: true
+          })
+      }
+    };
 
     var shrine = {
         shrine1: {lat: 34.967307, lng: 135.773176, zoom: 7, name: "shrine1"},
@@ -96,26 +98,27 @@ var layers = {
     };
 
     $('#storymap').storymap({
-          scenes: scenes,
-          baselayer: layers.satellite,
-          legend: true, // if you do not want a legend feature, you can simply not define the createLegend function.
-          credits: "",
-          loader: true,
-          scalebar: false,
-          fly: true,
-          navwidget: true,
-
-          createMap: function () {
-              // create a map in the "map" div, set the view to a given place and zoom
-              var map = L.map($(".storymap-map")[0], {
-                  zoomControl: false, scrollWheelZoom: false, fadeAnimation: true,
-                  zoomAnimation: true
-              }).setView([44, -120], 7);
-
-
-              return map;
-          }
-      });
+        scenes: shrine,
+        baselayer: layers.Mapbox_Streets,
+        navbar: true,
+        legend: true,
+        loader: false,
+        flyto: true,
+        scalebar: false,
+        scrolldown: true,
+        progressline: true,
+        navwidget: true,
+        createMap: function () {
+            var map = L.map($(".storymap-map")[0], {zoomControl: false}).setView([44, -120], 7);
+            basemap = this.baselayer.layer.addTo(map);
+            for (const d in shrine) {
+              shrine_info = shrine[d] // return info in format {lat: 47.956, lng: -118.980, zoom: 14,  name: "Dam 1"}
+              var marker = L.marker([dam_info.lat, dam_info.lng]).addTo(map);
+            }
+            return map;
+        }
+    });
+    
 </script>
 </body>
 </html>
